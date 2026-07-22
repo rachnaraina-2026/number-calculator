@@ -57,7 +57,10 @@ export default function HistoryView({ onBack, onNewCalculation }) {
           </div>
           <button
             onClick={onBack}
-            className="bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+            className="text-slate-900 font-semibold py-3 px-6 rounded-lg transition-opacity duration-200"
+            style={{ backgroundColor: '#f5f4fe' }}
+            onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+            onMouseLeave={(e) => e.target.style.opacity = '1'}
           >
             ← Back
           </button>
@@ -72,7 +75,10 @@ export default function HistoryView({ onBack, onNewCalculation }) {
             <p className="text-slate-600 text-lg mb-6">No calculations yet</p>
             <button
               onClick={onNewCalculation}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              className="text-white font-semibold py-3 px-6 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#c8a7ff' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               Start Calculating
             </button>
@@ -96,7 +102,7 @@ export default function HistoryView({ onBack, onNewCalculation }) {
                   {/* Result */}
                   <div>
                     <p className="text-sm text-slate-600 font-medium">Result</p>
-                    <p className="text-2xl font-bold text-blue-600">
+                    <p className="text-2xl font-bold" style={{ color: '#c8a7ff' }}>
                       {formatResult(item.result)}
                     </p>
                   </div>
@@ -117,16 +123,21 @@ export default function HistoryView({ onBack, onNewCalculation }) {
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleDelete(item.id)}
-                        className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded transition-colors duration-200 text-sm"
+                        className="flex-1 text-white font-semibold py-2 px-3 rounded transition-opacity duration-200 text-sm"
+                        style={{ backgroundColor: '#c8a7ff' }}
+                        onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                        onMouseLeave={(e) => e.target.style.opacity = '1'}
                       >
                         Delete
                       </button>
                       <button
                         onClick={() => {
-                          // Copy result to clipboard
                           navigator.clipboard.writeText(formatResult(item.result))
                         }}
-                        className="flex-1 bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-3 rounded transition-colors duration-200 text-sm"
+                        className="flex-1 text-white font-semibold py-2 px-3 rounded transition-opacity duration-200 text-sm"
+                        style={{ backgroundColor: '#c8a7ff' }}
+                        onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                        onMouseLeave={(e) => e.target.style.opacity = '1'}
                       >
                         Copy Result
                       </button>
@@ -141,7 +152,8 @@ export default function HistoryView({ onBack, onNewCalculation }) {
                     {item.numbers?.map((num, idx) => (
                       <span
                         key={idx}
-                        className="bg-slate-100 text-slate-900 px-3 py-1 rounded-full text-sm font-medium"
+                        className="text-white px-3 py-1 rounded-full text-sm font-medium"
+                        style={{ backgroundColor: '#c8a7ff' }}
                       >
                         {num}
                       </span>
@@ -158,7 +170,10 @@ export default function HistoryView({ onBack, onNewCalculation }) {
           <div className="mt-8 text-center">
             <button
               onClick={onNewCalculation}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
+              className="text-white font-semibold py-3 px-8 rounded-lg transition-opacity duration-200 text-lg"
+              style={{ backgroundColor: '#c8a7ff' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               New Calculation
             </button>

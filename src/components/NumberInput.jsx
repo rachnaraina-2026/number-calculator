@@ -40,13 +40,14 @@ export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove,
               <span className="text-sm font-semibold text-slate-700">
                 Number {currentIndex} of 10
               </span>
-              <span className="text-sm font-semibold text-blue-600">
+              <span className="text-sm font-semibold" style={{ color: '#c8a7ff' }}>
                 {Math.round((currentIndex / 10) * 100)}%
               </span>
             </div>
             <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-blue-600 h-full rounded-full transition-all duration-300"
+                className="h-full rounded-full transition-all duration-300"
+                style={{ backgroundColor: '#c8a7ff' }}
                 style={{ width: `${(currentIndex / 10) * 100}%` }}
               />
             </div>
@@ -73,14 +74,20 @@ export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove,
             <div className="grid grid-cols-2 gap-3 mt-6">
               <button
                 type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+                className="text-white font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+                style={{ backgroundColor: '#c8a7ff' }}
+                onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                onMouseLeave={(e) => e.target.style.opacity = '1'}
               >
                 Next
               </button>
               <button
                 type="button"
                 onClick={onViewHistory}
-                className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+                className="text-white font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+                style={{ backgroundColor: '#c8a7ff' }}
+                onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                onMouseLeave={(e) => e.target.style.opacity = '1'}
               >
                 History
               </button>
@@ -98,7 +105,7 @@ export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove,
                   key={idx}
                   className="relative group"
                 >
-                  <div className="bg-blue-600 text-white rounded-lg p-2 text-center font-semibold text-sm">
+                  <div className="text-white rounded-lg p-2 text-center font-semibold text-sm" style={{ backgroundColor: '#c8a7ff' }}>
                     {num}
                   </div>
                   <button

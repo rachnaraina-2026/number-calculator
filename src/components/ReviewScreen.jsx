@@ -33,7 +33,8 @@ export default function ReviewScreen({
               {numbers.map((num, idx) => (
                 <div
                   key={idx}
-                  className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-lg p-3 text-center font-semibold text-lg text-blue-900"
+                  className="border-2 rounded-lg p-3 text-center font-semibold text-lg text-white"
+                  style={{ backgroundColor: '#c8a7ff', borderColor: '#c8a7ff' }}
                 >
                   {num}
                 </div>
@@ -83,19 +84,28 @@ export default function ReviewScreen({
           <div className="grid grid-cols-3 gap-4">
             <button
               onClick={onEditNumbers}
-              className="bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="text-slate-900 font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#f5f4fe' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               ← Edit
             </button>
             <button
               onClick={onViewHistory}
-              className="bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="text-slate-900 font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#f5f4fe' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               History
             </button>
             <button
               onClick={onCalculate}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="text-white font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#c8a7ff' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               Calculate →
             </button>

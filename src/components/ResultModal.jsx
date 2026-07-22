@@ -26,7 +26,7 @@ export default function ResultModal({ numbers, operation, result, onReset, onVie
       {/* Modal */}
       <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-6">
+        <div className="px-8 py-6" style={{ background: 'linear-gradient(to right, #c8a7ff, #c8a7ff)' }}>
           <h2 className="text-2xl font-bold text-white">Calculation Result</h2>
           <p className="text-blue-100 text-sm mt-1">{getOperationLabel(operation)}</p>
         </div>
@@ -40,7 +40,8 @@ export default function ResultModal({ numbers, operation, result, onReset, onVie
               {numbers.map((num, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border-2 border-slate-200 rounded-lg p-3 text-center font-semibold text-slate-900"
+                  className="border-2 border-slate-200 rounded-lg p-3 text-center font-semibold text-white"
+                  style={{ backgroundColor: '#c8a7ff' }}
                 >
                   {num}
                 </div>
@@ -49,15 +50,15 @@ export default function ResultModal({ numbers, operation, result, onReset, onVie
           </div>
 
           {/* Operation & Result */}
-          <div className="mb-8 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg">
+          <div className="mb-8 p-6 border-2 rounded-lg" style={{ backgroundColor: '#f5f4fe', borderColor: '#c8a7ff' }}>
             <p className="text-sm font-medium text-slate-600 mb-2">Operation</p>
             <p className="text-lg font-semibold text-slate-900 mb-4">
               {getOperationLabel(operation)}
             </p>
 
-            <div className="border-t border-blue-200 pt-4 mt-4">
+            <div className="pt-4 mt-4" style={{ borderTop: '1px solid #c8a7ff' }}>
               <p className="text-sm font-medium text-slate-600 mb-2">Result</p>
-              <p className="text-4xl font-bold text-blue-600">
+              <p className="text-4xl font-bold" style={{ color: '#c8a7ff' }}>
                 {formatResult()}
               </p>
             </div>
@@ -83,13 +84,19 @@ export default function ResultModal({ numbers, operation, result, onReset, onVie
           <div className="grid grid-cols-2 gap-4">
             <button
               onClick={onReset}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="text-white font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#c8a7ff' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               New Calculation
             </button>
             <button
               onClick={onViewHistory}
-              className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="text-white font-semibold py-3 px-4 rounded-lg transition-opacity duration-200"
+              style={{ backgroundColor: '#c8a7ff' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               View History
             </button>
