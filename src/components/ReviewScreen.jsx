@@ -4,6 +4,7 @@ export default function ReviewScreen({
   onOperationChange,
   onCalculate,
   onEditNumbers,
+  onViewHistory,
 }) {
   const operations = [
     { value: 'ascending', label: 'Sort Ascending' },
@@ -79,16 +80,22 @@ export default function ReviewScreen({
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-4">
+          <div className="grid grid-cols-3 gap-4">
             <button
               onClick={onEditNumbers}
-              className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
             >
-              ← Edit Numbers
+              ← Edit
+            </button>
+            <button
+              onClick={onViewHistory}
+              className="bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+            >
+              History
             </button>
             <button
               onClick={onCalculate}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
             >
               Calculate →
             </button>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove }) {
+export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove, onViewHistory }) {
   const [input, setInput] = useState('')
   const [error, setError] = useState('')
 
@@ -70,12 +70,21 @@ export default function NumberInput({ currentIndex, numbers, onSubmit, onRemove 
             />
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
-            <button
-              type="submit"
-              className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
-            >
-              Next
-            </button>
+            <div className="grid grid-cols-2 gap-3 mt-6">
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              >
+                Next
+              </button>
+              <button
+                type="button"
+                onClick={onViewHistory}
+                className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              >
+                History
+              </button>
+            </div>
           </form>
         </div>
 

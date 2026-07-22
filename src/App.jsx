@@ -2,12 +2,15 @@ import { useState } from 'react'
 import NumberInput from './components/NumberInput'
 import ReviewScreen from './components/ReviewScreen'
 import ResultModal from './components/ResultModal'
+import HistoryView from './components/HistoryView'
+import { saveCalculation } from './services/supabaseClient'
 
 export default function App() {
   const [numbers, setNumbers] = useState([])
   const [operation, setOperation] = useState('sum')
   const [showResult, setShowResult] = useState(false)
   const [result, setResult] = useState(null)
+  const [showHistory, setShowHistory] = useState(false)
 
   const handleNumberSubmit = (num) => {
     if (numbers.length < 10) {
@@ -19,7 +22,7 @@ export default function App() {
     setNumbers(numbers.filter((_, i) => i !== index))
   }
 
-  const calculateResult = () => {
+  const calculateResult = async () => {
     const nums = [...numbers].sort((a, b) => a - b)
 
     let res
@@ -54,6 +57,7 @@ export default function App() {
     }
 
     setResult(res)
+    await saveCalculation(numbers, operation, res)
     setShowResult(true)
   }
 
@@ -64,8 +68,28 @@ export default function App() {
     setResult(null)
   }
 
+  if (showHistory) {
+    return (
+      <HistoryView
+        onBack={() => setShowHistory(false)}
+        onNewCalculation={() => {
+          setShowHistory(false)
+          handleReset()
+        }}
+      />
+    )
+  }
+
   if (showResult) {
-    return <ResultModal numbers={numbers} operation={operation} result={result} onReset={handleReset} />
+    return (
+      <ResultModal
+        numbers={numbers}
+        operation={operation}
+        result={result}
+        onReset={handleReset}
+        onViewHistory={() => setShowHistory(true)}
+      />
+    )
   }
 
   if (numbers.length === 10) {
@@ -76,6 +100,7 @@ export default function App() {
         onOperationChange={setOperation}
         onCalculate={calculateResult}
         onEditNumbers={() => setNumbers([])}
+        onViewHistory={() => setShowHistory(true)}
       />
     )
   }
@@ -86,6 +111,7 @@ export default function App() {
       numbers={numbers}
       onSubmit={handleNumberSubmit}
       onRemove={handleRemoveNumber}
+      onViewHistory={() => setShowHistory(true)}
     />
   )
 }

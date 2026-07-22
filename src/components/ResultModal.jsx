@@ -1,4 +1,4 @@
-export default function ResultModal({ numbers, operation, result, onReset }) {
+export default function ResultModal({ numbers, operation, result, onReset, onViewHistory }) {
   const getOperationLabel = (op) => {
     const labels = {
       ascending: 'Sort Ascending',
@@ -79,13 +79,21 @@ export default function ResultModal({ numbers, operation, result, onReset }) {
             </div>
           )}
 
-          {/* Button */}
-          <button
-            onClick={onReset}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
-          >
-            Calculate Another Set
-          </button>
+          {/* Buttons */}
+          <div className="grid grid-cols-2 gap-4">
+            <button
+              onClick={onReset}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+            >
+              New Calculation
+            </button>
+            <button
+              onClick={onViewHistory}
+              className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+            >
+              View History
+            </button>
+          </div>
         </div>
       </div>
     </div>
